@@ -1,18 +1,7 @@
 public class Journal
 {
-    public string _date;
     public List<string> _journal;
-    public List<string> _questions;
     public Journal() {}
-    public void WriteJournal()
-    {
-        Random rnd = new Random();
-        string anyQuestion = _questions[rnd.Next(10)];
-        Console.WriteLine(anyQuestion); 
-        string answer = Console.ReadLine();
-        string entry = $"Date: {_date} - Prompt: {anyQuestion} - {answer}.";
-        _journal.Add(entry);
-    }
     public void ShowJournal()
     {
         for (int i = 0; i < _journal.Count; i++)
