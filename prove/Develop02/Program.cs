@@ -21,34 +21,28 @@ class Program
             Console.Write("What would you like to do? "); 
             string userInput = Console.ReadLine();
             int userNumber = int.Parse(userInput);
+            Journal journal1 = new Journal();
+            journal1._date = date;
+            journal1._journal = journal;
+            journal1._questions = questions;
             if (userNumber == 1)
                 {
-                    Write writeNew = new Write();
-                    writeNew._date = date;
-                    writeNew._journal = journal;
-                    writeNew._questions = questions;
-                    writeNew.Display();
+                    journal1.WriteJournal();
                     response = "yes";
                 }
             else if (userNumber == 2)
                 {
-                    Show displayNew = new Show();
-                    displayNew._journal = journal;
-                    displayNew.Display();
+                    journal1.ShowJournal();
                     response = "yes";
                 }
             else if (userNumber == 3)
                 {
-                    Load loadNew = new Load();
-                    loadNew._journal = journal;
-                    loadNew.Display();
+                    journal1.LoadJournal();
                     response = "yes";
                 }
             else if (userNumber == 4)
                 {
-                    Save saveNew = new Save();
-                    saveNew._journal = journal;
-                    saveNew.Display();
+                    journal1.SaveJournal();
                     response = "yes";
                 }
             else if (userNumber == 5)
@@ -57,9 +51,7 @@ class Program
                 }
             else if (userNumber == 6)
                 {
-                    Delete deleteNew = new Delete();
-                    deleteNew._journal = journal;
-                    deleteNew.Display();
+                    journal1.DeleteJournal();
                     response = "yes";
                 }
             else if (userNumber < 0 || userNumber > 6)
