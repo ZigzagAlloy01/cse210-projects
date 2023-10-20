@@ -3,27 +3,33 @@ using System.ComponentModel.DataAnnotations;
 public class Scripture 
 {
     public string _file;
+    private int _referenceIndex;
+    public List<int> _referencesIndexes;
+    private int _wordIndex;
+    public List<int> _wordIndexList;
     public List<string> _listOfScriptures;
     public List<string> _election;
-    private List<string> _lettersInScripture = new List<string>();
+    public List<string> _lettersInScripture;
     public Scripture() {}
-    public void LoadScripture()  {
+    public string WriteScripture()  {
         Random rnd = new Random();
         string anyScripture = _listOfScriptures[rnd.Next(6)];
-        Console.WriteLine(anyScripture);
         _election.Add(anyScripture);
+        _referenceIndex = _listOfScriptures.IndexOf(anyScripture);
+        _referencesIndexes.Add(_referenceIndex);
+        return anyScripture;
         }
-    public void GetScripture() {
+    public void GetScriptureLetters() {
         string elements = _election[0];
         char [] letters = elements.ToCharArray();
         foreach (char letter in letters) {
-            _lettersInScripture.Add((letter.ToString()));
+            string requiredLetter = letter.ToString();
+            _lettersInScripture.Add(requiredLetter);
         }
     }
-    public string GetBlackedOutScripture() {
+    public void GetBlackedOutScripture() {
         Random rnd = new Random();
-        string anyLetter = _lettersInScripture[rnd.Next(_lettersInScripture.Count)];
-        return anyLetter;
+        _wordIndex = rnd.Next(_lettersInScripture.Count);
+        _wordIndexList.Add(_wordIndex);
     }
-
 }
