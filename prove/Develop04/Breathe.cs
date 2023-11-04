@@ -1,5 +1,5 @@
 public class Breathe {
-    private List <string> clock = new List<string> {"|", "/", "-", "\\", "|", "/", "-", "\\"};
+    private List <string> clock = new List<string> {"|", "/", "—", "\\", "|", "/", "—", "\\"};
     public void BreathingActivity() {
         Console.WriteLine("Welcome to the Breathing Activity. This activity will help you relax by breathing in and out slowly. Clear your mind and focus on your breathing. How long, in seconds, would you like for your session? ");
         string secondsString = Console.ReadLine();
@@ -7,13 +7,13 @@ public class Breathe {
         Console.Write("Get ready...");
         foreach (string s in clock) {
             Console.Write(s);
-            Thread.Sleep(700);
+            Thread.Sleep(300);
             Console.Write("\b \b");
         }
         Console.WriteLine(" ");
         int m = 3;
         while (m > 0) {
-            double k = Math.Ceiling(secondsInt * 0.4);
+            double k = Math.Ceiling(secondsInt * 0.13);
             Console.WriteLine("Breathe in...");
             while (k > 0) {
                 Console.Write(k);
@@ -21,7 +21,7 @@ public class Breathe {
                 Console.Write("\b\b");
                 k--;
             }
-            double l = Math.Ceiling(secondsInt * 0.6);
+            double l = Math.Ceiling(secondsInt * 0.2);
             Console.WriteLine("Now breathe out...");
             while (l > 0) {
                 Console.Write(l);
@@ -35,7 +35,7 @@ public class Breathe {
         Console.WriteLine($"You have completed another {secondsInt} seconds of Breathing Activity.");
         foreach (string s in clock) {
             Console.Write(s);
-            Thread.Sleep(700);
+            Thread.Sleep(300);
             Console.Write("\b \b");
         }
     }    

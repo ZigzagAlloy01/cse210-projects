@@ -1,5 +1,5 @@
 public class List {
-    private List <string> clock = new List<string> {"|", "/", "-", "\\", "|", "/", "-", "\\"};
+    private List <string> clock = new List<string> {"|", "/", "—", "\\", "|", "/", "—", "\\"};
     private List <string> prompts2 = new List<string> {"Who are people that you appreciate?", "What are personal strengths of yours?", "Who are people that you have helped this week?", "When have you felt the Holy Ghost this month?", "Who are some of your personal heroes?"};
     private List <string> items = new List<string> ();
     public void ListActivity() {
@@ -10,14 +10,14 @@ public class List {
         Console.Write("Get ready...");
         foreach (string s in clock) {
             Console.Write(s);
-            Thread.Sleep(700);
+            Thread.Sleep(300);
             Console.Write("\b \b");
         }
         Console.WriteLine(" ");
         Console.WriteLine("Consider the following prompt:");
         Random rnd = new Random();
         int elements3 = prompts2.Count();
-        Console.WriteLine($"--- {prompts2[rnd.Next()]} ---");
+        Console.WriteLine($"--- {prompts2[rnd.Next(elements3)]} ---");
         int k = 5;
             Console.WriteLine("You may begin in:");
             while (k > 0) {
@@ -39,7 +39,7 @@ public class List {
             Console.WriteLine("Well done!");
             foreach (string s in clock) {
                 Console.Write(s);
-                Thread.Sleep(700);
+                Thread.Sleep(300);
                 Console.Write("\b \b");
             }
     }

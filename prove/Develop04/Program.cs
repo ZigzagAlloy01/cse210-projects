@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Globalization;
 class Program
 {
@@ -10,7 +11,7 @@ class Program
             for (int i = 0; i < menu.Count(); i++)
             {
                 Console.WriteLine(menu[i]);
-                Thread.Sleep(400);
+                Thread.Sleep(300);
             }
             string userChoice = Console.ReadLine();
             int activity = int.Parse(userChoice);
@@ -27,6 +28,9 @@ class Program
                 list.ListActivity();
             }
             else if (activity == 4) {
+                repeat = false;
+            }
+            else if (activity < 1 || activity > 4) {
                 repeat = false;
             }
         }    
