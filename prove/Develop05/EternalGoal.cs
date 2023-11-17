@@ -1,15 +1,10 @@
 public class EternalGoal : Nowhere {
     private string _name;
     private string _description;
-    private List<string> _eternalGoals = new List<string> {};
+
     private List<int> _scoreEternal = new List<int> {};
     public EternalGoal() {
         Console.WriteLine(" ");
-    }
-    public EternalGoal(string name, string description) {
-        _name = name;
-        _description = description;
-        _eternalGoals.Add($"{_name}: {_description}");
     }
     public override int DisplayMenu()
     {
@@ -40,6 +35,11 @@ public class EternalGoal : Nowhere {
         _points = int.Parse(_pointAssociated);
         Console.WriteLine(" ");
         return _details;
+    }
+    public void ListOfEternalGoals(string name, string description) {
+        _name = name;
+        _description = description;
+        _eternalGoals.Add($"{_name}: {_description}");
     }
     public override void recordEvent() {
         _points = 200;

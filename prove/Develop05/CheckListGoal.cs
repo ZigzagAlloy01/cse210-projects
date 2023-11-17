@@ -6,11 +6,6 @@ public class CheckListGoal : Nowhere {
     public CheckListGoal() {
         Console.WriteLine(" ");
     }
-    public CheckListGoal(string name, string description) {
-        _name = name;
-        _description = description;
-        _checkListGoals.Add($"{_name}: {_description}");
-    }
     public override int DisplayMenu()
     {
         Console.WriteLine("Menu Options: ");
@@ -40,6 +35,11 @@ public class CheckListGoal : Nowhere {
         _points = int.Parse(_pointAssociated);
         Console.WriteLine(" ");
         return _details;
+    }
+    public void ListOfCheckedGoals(string name, string description) {
+        _name = name;
+        _description = description;
+        _checkGoals.Add($"{_name}: {_description}");
     }
     public override void recordEvent() {
         _points = 200;

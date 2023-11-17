@@ -4,25 +4,40 @@ class Program
 {
     static void Main(string[] args)
     {
+        List<string> goals = new List<string> ();
         string userGoal;
         string description;
         string response = "yes";
         int userNumber;
         SimpleGoal simple = new SimpleGoal();
-        //EternalGoal eternal = new EternalGoal();
+        EternalGoal eternal = new EternalGoal();
+        CheckListGoal checkList = new CheckListGoal();
         while (response == "yes") {
             userNumber = simple.DisplayMenu();
             if (userNumber == 1)
                 {
-                    userGoal = simple.WriteTitle();
-                    description = simple.WriteDescription();
-                    SimpleGoal simple2 = new SimpleGoal(userGoal, description);
-                    simple2.WriteGoal();
+                    int typeGoal = simple.WriteGoal();
+                    if (typeGoal == 1) {
+                        userGoal = simple.WriteTitle();
+                        description = simple.WriteDescription();
+                        simple.ListOfSimpleGoals(userGoal, description);
+                    }
+                    else if (typeGoal == 2) {
+                        userGoal = eternal.WriteTitle();
+                        description = eternal.WriteDescription();
+                        eternal.ListOfEternalGoals(userGoal, description);
+                    }
+                    else if (typeGoal == 3) {
+                        userGoal = checkList.WriteTitle();
+                        description = checkList.WriteDescription();
+                        checkList.ListOfCheckedGoals(userGoal, description);
+                    }
+                    
                     response = "yes";
                 }
             else if (userNumber == 2)
                 {
-                    //journal1.ShowJournal();
+                    simple.ListGoals();
                     response = "yes";
                 }
             else if (userNumber == 3)

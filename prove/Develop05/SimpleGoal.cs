@@ -1,13 +1,11 @@
 public class SimpleGoal : Nowhere {
     private string _name;
-    private List<string> _simpleGoals = new List<string> {};
     private string _description;
     private List<int> _scoreSimple = new List<int> {};
     public SimpleGoal() {
         Console.WriteLine(" ");
     }
-    public SimpleGoal(string name, string description) {
-        
+    public void ListOfSimpleGoals(string name, string description) {
         _name = name;
         _description = description;
         _simpleGoals.Add($"{_name}: {_description}");
@@ -15,7 +13,7 @@ public class SimpleGoal : Nowhere {
     public override int DisplayMenu()
     {
         _currentPoints.Add(0);
-        Console.WriteLine($"You have {_currentPoints[-1]} points.");
+        Console.WriteLine($"You have {_currentPoints[0]} points.");
         Console.WriteLine(" ");
         Console.WriteLine("Menu Options: ");
         Console.WriteLine("1. Create New Goal");
@@ -25,6 +23,9 @@ public class SimpleGoal : Nowhere {
         Console.WriteLine("5. Record Event");
         Console.WriteLine("6. Quit");
         Console.Write("Select a choice from the menu: ");
+        _simpleGoals.Add("Simple");
+        _eternalGoals.Add("Eterno");
+        _checkGoals.Add("Lista");
         string userInput = Console.ReadLine();
         _userNumber = int.Parse(userInput);
         return _userNumber;
