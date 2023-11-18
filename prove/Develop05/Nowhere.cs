@@ -1,77 +1,151 @@
+using System.Security.Cryptography.X509Certificates;
+
 public abstract class Nowhere {
     public int _userNumber;
     public string _goalNumber;
     public int _goalInt;
-    public string _details;
+    public string _detail;
+    public string _txt;
     public string _title;
     public string _pointAssociated;
     public int _points;
     public bool _completed;
     public string _X;
-    public List<string> _simpleGoals = new List<string> {};
-    public List<string> _eternalGoals = new List<string> {};
-    public List<string> _checkGoals = new List<string> {};
+    public List<string> _simpleGoalsDetail = new List<string> {};
+    public List<string> _eternalGoalsDetail = new List<string> {};
+    public List<string> _checkGoalsDetail = new List<string> {};
     public List<string> _goals = new List<string> {};
+    public List<string> _loadFileData = new List<string> {};
     public List<string> _titles = new List<string> {};
+    public List<string> _marksSimple = new List<string> {};
+    public List<string> _marksEternal = new List<string> {};
+    public List<string> _marksChecklist = new List<string> {};
     public List<int> _currentPoints = new List<int> {};
-    public abstract void recordEvent();
-    public abstract int DisplayMenu();
+    public List<int> _count = new List<int> {};
+    public List<int> _limit = new List<int> {};
+    public abstract void recordEvent(int points);
+    public int DisplayMenu() {
+        _currentPoints.Add(0);
+        Console.WriteLine($"You have {_currentPoints[0]} points.");
+        Console.WriteLine(" ");
+        Console.WriteLine("Menu Options: ");
+        Console.WriteLine("1. Create New Goal");
+        Console.WriteLine("2. List Goals");
+        Console.WriteLine("3. Save Goals");
+        Console.WriteLine("4. Load Goals");
+        Console.WriteLine("5. Record Event");
+        Console.WriteLine("6. Quit");
+        Console.Write("Select a choice from the menu: ");
+        string userInput = Console.ReadLine();
+        _userNumber = int.Parse(userInput);
+        return _userNumber;
+    }
+    public void FirstIndex() {
+        _marksSimple.Add(" ");
+        _marksEternal.Add(" ");
+        _marksChecklist.Add(" ");
+        _simpleGoalsDetail.Add("None");
+        _eternalGoalsDetail.Add("None");
+        _checkGoalsDetail.Add("None");
+        _count.Add(1);
+        _limit.Add(1);
+        _count.Add(0);
+        _limit.Add(0);
+    }
+    public int WriteGoal() {
+        Console.WriteLine("The types of Goals are: ");
+        Console.WriteLine("1. Simple Goal");
+        Console.WriteLine("2. Eternal Goal");
+        Console.WriteLine("3. Checklist Goal");
+        Console.Write("Which type of goal would you like to create? ");
+        _goalNumber = Console.ReadLine();
+        _goalInt = int.Parse(_goalNumber);
+        return _goalInt;
+    }    
     public abstract string WriteTitle();
     public abstract string WriteDescription();
 
-    public void ListGoals() {
+    public void ListGoalsSimple() {
         Console.WriteLine("The goals are: ");
         Console.WriteLine("Simple Goals");
-        for (int i = 0; i < _simpleGoals.Count; i++)
+        for (int i = 0; i < _simpleGoalsDetail.Count; i++)
             {
-                string show = _simpleGoals[i];
-                Console.WriteLine($"{i+1}. {show}");
+                _X = _marksSimple[i];
+                string show = _simpleGoalsDetail[i];
+                Console.WriteLine($"{i+1}. [{_X}] {show}");
             }
+    }
+    public void ListGoalsEternal() {
         Console.WriteLine("Eternal Goals");
-        for (int i = 0; i < _eternalGoals.Count; i++)
+        
+        for (int i = 0; i < _eternalGoalsDetail.Count; i++)
             {
-                string show = _eternalGoals[i];
-                Console.WriteLine($"{i+1}. {show}");
+                _X = _marksEternal[i];
+                string show = _eternalGoalsDetail[i];
+                Console.WriteLine($"{i+1}. [{_X}] {show}");
             }
+    }
+    public void ListGoalsChecklist() {
         Console.WriteLine("Check List Goals");
-        for (int i = 0; i < _checkGoals.Count; i++)
+        for (int i = 0; i < _checkGoalsDetail.Count; i++)
             {
-                string show = _checkGoals[i];
-                Console.WriteLine($"{i+1}. {show}");
+                _X = _marksChecklist[i];
+                string show = _checkGoalsDetail[i];
+                int current = _count[i+1];
+                int final = _limit[i+1];
+                Console.WriteLine($"{i+1}. [{_X}] {show} -- Currently completed: {current}/{final}");
             }
-        Console.WriteLine("You have X points");
-    }
-    public void SaveGoals()
-    {
-        Console.WriteLine("What is the file name? "); 
-            string answer = Console.ReadLine();
-            using (StreamWriter sw = File.CreateText(answer))
-            {
-                for (int i = 0; i < _goals.Count; i++)
-                {
-                    string entry = _goals[i];
-                    sw.WriteLine(entry);
-                }
-            }
-    }
-
+    }    
     public void LoadGoals()
     {
-        Console.WriteLine("What is the file name? "); 
+        Console.Write("What is the file name? "); 
         string answer = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(answer);
         _goals.Clear();
         foreach (string line in lines)
             {
                 string[] parts = line.Split(" - ");
-                string dateFile = parts[0];
-                string first = parts[1];
-                string last = parts[2];
-                Console.WriteLine($"{dateFile} - {first}");
-                Console.WriteLine($" - {last}");
-                string entry = $"[{_X}] {_title} ({_details})";
-                _goals.Add(entry);
+                string data = parts[0];
+                _goals.Add(data);
+                data = parts[1];
+                _goals.Add(data);
             }
-    }
+        foreach(string line in lines)
+            {
+                string[] parts = line.Split(" / ");
+                string data = parts[0];
+                _loadFileData.Add(data);
+                Console.WriteLine(data);
+                data = parts[1];
+                _loadFileData.Add(data);
+                Console.WriteLine(data);
+                data = parts[2];
+                _loadFileData.Add(data);
+                Console.WriteLine(data);
+                data = parts[3];
+                _loadFileData.Add(data);
+                Console.WriteLine(data);
+                data = parts[4];
+                _loadFileData.Add(data);
+                Console.WriteLine(data);
+            }
+            Console.WriteLine("Load file");
+        foreach (string i in _loadFileData) {
+            Console.WriteLine(i);
+        }
 
+        //_simpleGoalsDetail 
+        //_eternalGoalsDetail
+        //_checkGoalsDetail
+    }
+    public void bringBackData() {
+        string variable = _loadFileData[0];
+        Console.WriteLine(variable);
+        int lenght = _loadFileData.Count;
+        Console.WriteLine(lenght);
+        int start = _loadFileData.IndexOf(" - Check List Goals");
+        for (int i = 35; i < lenght; i++) {
+            Console.WriteLine(_loadFileData[i]);
+        }
+    }
 }

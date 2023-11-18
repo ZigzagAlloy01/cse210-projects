@@ -1,49 +1,73 @@
 public class CheckListGoal : Nowhere {
     private string _name;
     private string _description;
-    private List<string> _checkListGoals = new List<string> {};
-    private List<int> _scoreCheck = new List<int> {};
+    private List<int> _associatedPoints = new List<int> {};
+    private List<int> _bonusPoints = new List<int> {};
     public CheckListGoal() {
         Console.WriteLine(" ");
-    }
-    public override int DisplayMenu()
-    {
-        Console.WriteLine("Menu Options: ");
-        Console.WriteLine("1. Create New Goal");
-        Console.WriteLine("2. List Goals");
-        Console.WriteLine("3. Save Goals");
-        Console.WriteLine("4. Load Goals");
-        Console.WriteLine("5. Record Event");
-        Console.WriteLine("6. Quit");
-        Console.Write("Select a choice from the menu: ");
-        string userInput = Console.ReadLine();
-        _userNumber = int.Parse(userInput);
-        return _userNumber;
-    }
-    public override string WriteTitle(){
-        Console.Write("What is the name of your goal? ");
-        _title = Console.ReadLine();
-        Console.WriteLine(" ");
-        return _title;
-    }
-    public override string WriteDescription() {
-        Console.Write("What is a short description of it? ");
-        _details = Console.ReadLine();
-        Console.WriteLine(" ");
-        Console.Write("What is the amount of points associated with this goal? ");
-        _pointAssociated = Console.ReadLine();
-        _points = int.Parse(_pointAssociated);
-        Console.WriteLine(" ");
-        return _details;
     }
     public void ListOfCheckedGoals(string name, string description) {
         _name = name;
         _description = description;
-        _checkGoals.Add($"{_name}: {_description}");
+        _checkGoalsDetail.Add($"{_name}: {_description}");
+        _marksChecklist.Add(" ");
     }
-    public override void recordEvent() {
-        _points = 200;
-        _scoreCheck.Add(_points);
+    public override string WriteTitle(){
+        _checkGoalsDetail.Remove("None");
+        Console.Write("What is the name of your goal? ");
+        _title = Console.ReadLine();
+        Console.WriteLine(" ");
+        _titles.Add(_title);
+        return _title;
+    }
+    public override string WriteDescription() {
+        Console.Write("What is a short description of it? ");
+        _detail = Console.ReadLine();
+        Console.WriteLine(" ");
+        Console.Write("What is the amount of points associated with this goal? ");
+        _pointAssociated = Console.ReadLine();
+        _points = int.Parse(_pointAssociated);
+        _associatedPoints.Add(_points);
+        Console.WriteLine(" ");
+        Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+        _pointAssociated = Console.ReadLine();
+        _points = int.Parse(_pointAssociated);
+        _count.Remove(1);
+        _limit.Remove(1);
+        _count.Add(0);
+        _limit.Add(_points);
+        Console.Write("What is the bonus for accomplishing it that many times? ");
+        _pointAssociated = Console.ReadLine();
+        _points = int.Parse(_pointAssociated);
+        _bonusPoints.Add(_points);
+        return _detail;
+    }
+
+    public void SaveGoalsChecklist(string _txt, List<string> _goals)
+    {
+        using (StreamWriter sw = File.AppendText($"{_txt}"))
+        {
+            _goals.Add(" - Check List Goals / * / * / * / ");
+            for (int i = 0; i < _checkGoalsDetail.Count; i++)
+                {
+                    _X = _marksChecklist[i];
+                    string show = _checkGoalsDetail[i];
+                    int current = _count[i+1];
+                    int final = _limit[i+1];
+                    int associatedScore = _associatedPoints[i];
+                    int bonusScore = _bonusPoints[i];
+                    _goals.Add($" - {i+1}. [{_X}] {show} -- Currently completed: / {current} / {final} / {associatedScore} / {bonusScore}");
+                }
+            for (int i = 0; i < _goals.Count; i++)
+            {
+                string entry = _goals[i];
+                sw.WriteLine(entry);
+            }
+        }
+            
+    }
+    public override void recordEvent(int points) {
+        _points = points;
     }
     public bool isComplete() {
         _completed = false;

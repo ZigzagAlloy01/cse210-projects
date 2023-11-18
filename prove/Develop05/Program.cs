@@ -5,6 +5,8 @@ class Program
     static void Main(string[] args)
     {
         List<string> goals = new List<string> ();
+        List<string> titles = new List<string> ();
+        string goal;
         string userGoal;
         string description;
         string response = "yes";
@@ -12,6 +14,9 @@ class Program
         SimpleGoal simple = new SimpleGoal();
         EternalGoal eternal = new EternalGoal();
         CheckListGoal checkList = new CheckListGoal();
+        simple.FirstIndex();
+        eternal.FirstIndex();
+        checkList.FirstIndex();
         while (response == "yes") {
             userNumber = simple.DisplayMenu();
             if (userNumber == 1)
@@ -19,16 +24,19 @@ class Program
                     int typeGoal = simple.WriteGoal();
                     if (typeGoal == 1) {
                         userGoal = simple.WriteTitle();
+                        titles.Add(userGoal);
                         description = simple.WriteDescription();
                         simple.ListOfSimpleGoals(userGoal, description);
                     }
                     else if (typeGoal == 2) {
                         userGoal = eternal.WriteTitle();
+                        titles.Add(userGoal);
                         description = eternal.WriteDescription();
                         eternal.ListOfEternalGoals(userGoal, description);
                     }
                     else if (typeGoal == 3) {
                         userGoal = checkList.WriteTitle();
+                        titles.Add(userGoal);
                         description = checkList.WriteDescription();
                         checkList.ListOfCheckedGoals(userGoal, description);
                     }
@@ -37,32 +45,53 @@ class Program
                 }
             else if (userNumber == 2)
                 {
-                    simple.ListGoals();
+                    simple.ListGoalsSimple();
+                    eternal.ListGoalsEternal();
+                    checkList.ListGoalsChecklist();
                     response = "yes";
                 }
             else if (userNumber == 3)
                 {
-                    //journal1.LoadJournal();
+                    string txt = simple.SaveGoalsSimple();
+                    goals = simple.DeliverGoals();
+                    eternal.SaveGoalsEternal(txt, goals);
+                    goals = eternal.DeliverGoals();
+                    checkList.SaveGoalsChecklist(txt, goals);
                     response = "yes";
                 }
             else if (userNumber == 4)
                 {
-                   // journal1.SaveJournal();
+                    simple.LoadGoals();
                     response = "yes";
                 }
             else if (userNumber == 5)
                 {
-                    response = "no";
+                    Console.WriteLine("The goals are: ");
+                    for (int i = 0; i < titles.Count; i++)
+                        {
+                            string show = titles[i];
+                            Console.WriteLine($"{i+1}. {show}");
+                        }
+                        Console.WriteLine("Which goal did you accomplish? ");
+                        string update = Console.ReadLine();
+                        int goalToUpdate = int.Parse(update);
+                        goal = titles[goalToUpdate-1];
+                        Console.WriteLine(goal);
+                    response = "yes";
                 }
             else if (userNumber == 6)
                 {
-                   // journal1.DeleteJournal();
-                    response = "yes";
+                   response = "no";
                 }
-            else if (userNumber < 1 || userNumber > 6)
+            else if (userNumber < 1 || userNumber > 7)
                 {
                     response = "no";
                 }
+            else if (userNumber == 7)
+                {
+                    simple.bringBackData();
+                    response = "yes";
+                }    
         }
 
     }
