@@ -12,12 +12,19 @@ class Program
         List<int> associatedPointsSimple = new List<int> ();
         List<int> associatedPointsEternal = new List<int> ();
         List<int> associatedPointsChecklist = new List<int> ();
+        List<int> associatedBonusPoints = new List<int> ();
+        List<int> count = new List<int> ();
+        List<int> limit = new List<int> ();
+        List<int> currentPoints = new List<int> ();
         string goal;
         string userGoal;
         string description;
         string response = "yes";
         int userNumber;
         int point;
+        int sum;
+        int myCount;
+        int myLimit;
         SimpleGoal simple = new SimpleGoal();
         EternalGoal eternal = new EternalGoal();
         CheckListGoal checkList = new CheckListGoal();
@@ -30,7 +37,10 @@ class Program
         goalsSimple.Add(" ");
         goalsEternal.Add(" ");
         goalsChecklist.Add(" ");
+        currentPoints.Add(0);
         while (response == "yes") {
+            sum = currentPoints.Sum();
+            Console.WriteLine($"You have {sum} points.");
             userNumber = simple.DisplayMenu();
             if (userNumber == 1)
                 {
@@ -84,6 +94,33 @@ class Program
                 }
             else if (userNumber == 5)
                 {
+                    Console.WriteLine("List of points");
+                    associatedPointsSimple = simple.GivePoints();
+                    for (int i = 1; i < associatedPointsSimple.Count; i++) {
+                        Console.WriteLine(associatedPointsSimple[i]);
+                    }
+                    associatedPointsEternal = eternal.GivePoints();
+                    for (int i = 1; i < associatedPointsEternal.Count; i++) {
+                        Console.WriteLine(associatedPointsEternal[i]);
+                    }
+                    associatedPointsChecklist = checkList.GivePoints();
+                    for (int i = 1; i < associatedPointsChecklist.Count; i++) {
+                        Console.WriteLine(associatedPointsChecklist[i]);
+                    }
+                    associatedBonusPoints = checkList.GiveBonusPoints();
+                    for (int i = 1; i < associatedBonusPoints.Count; i++) {
+                        Console.WriteLine(associatedPointsChecklist[i]);
+                    }
+                    count = checkList.GiveMyCount();
+                    for (int i = 1; i < count.Count; i++) {
+                        Console.WriteLine(count[i]);
+                    }
+                    limit = checkList.GiveMyLimit();
+                    for (int i = 1; i < limit.Count; i++) {
+                        Console.WriteLine(count[i]);
+                    }
+
+                    Console.WriteLine(" ");
                     Console.WriteLine("The goals are: ");
                     Console.WriteLine("Simple Goals: ");
                     for (int i = 1; i < goalsSimple.Count; i++)
@@ -120,6 +157,7 @@ class Program
                         Console.WriteLine(goal);
                         point = associatedPointsSimple[goalToUpdate];
                         Console.WriteLine(point);
+                        currentPoints.Add(point);
                     }
                     else if (kindGoalInt == 2) {
                         Console.WriteLine("Eternal Goals: ");
@@ -135,6 +173,7 @@ class Program
                         Console.WriteLine(goal);
                         point = associatedPointsEternal[goalToUpdate];
                         Console.WriteLine(point);
+                        currentPoints.Add(point);
                     }
                     else if (kindGoalInt == 3) {
                         Console.WriteLine("Checklist Goals: ");
@@ -150,6 +189,14 @@ class Program
                         Console.WriteLine(goal);
                         point = associatedPointsChecklist[goalToUpdate];
                         Console.WriteLine(point);
+                        currentPoints.Add(point);
+                        count[goalToUpdate] = count[goalToUpdate] + 1;
+                        myCount = count[goalToUpdate];
+                        myLimit = limit[goalToUpdate];
+                        if (myCount == myLimit) {
+                            int addReward = associatedBonusPoints[goalToUpdate];
+                            currentPoints.Add(addReward);
+                        }
                     }
                     response = "yes";
                 }
@@ -157,18 +204,10 @@ class Program
                 {
                    response = "no";
                 }
-            else if (userNumber < 1 || userNumber > 7)
+            else if (userNumber < 1 || userNumber > 6)
                 {
                     response = "no";
-                }
-            else if (userNumber == 7)
-                {
-                    associatedPointsSimple = simple.GivePoints();
-                    for (int i = 1; i < associatedPointsSimple.Count; i++) {
-                        Console.WriteLine(associatedPointsSimple[i]);
-                    }
-                    response = "yes";
-                }    
+                } 
         }
 
     }

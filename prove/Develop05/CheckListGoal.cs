@@ -12,6 +12,12 @@ public class CheckListGoal : Nowhere {
         _checkGoalsDetail.Add($"{_name}: {_description}");
         _marksChecklist.Add(" ");
     }
+    public List<int> GivePoints() {
+        return _associatedPoints;
+    }
+    public List<int> GiveBonusPoints() {
+        return _bonusPoints;
+    }
     public override string WriteTitle(){
         _checkGoalsDetail.Remove("None");
         Console.Write("What is the name of your goal? ");

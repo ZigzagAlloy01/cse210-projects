@@ -21,14 +21,11 @@ public abstract class Nowhere {
     public List<string> _marksSimple = new List<string> {};
     public List<string> _marksEternal = new List<string> {};
     public List<string> _marksChecklist = new List<string> {};
-    public List<int> _currentPoints = new List<int> {};
     public List<int> _count = new List<int> {};
     public List<int> _limit = new List<int> {};
     public List<int> _loadFilePoints = new List<int> {};
     public abstract void recordEvent(int points);
     public int DisplayMenu() {
-        _currentPoints.Add(0);
-        Console.WriteLine($"You have {_currentPoints[0]} points.");
         Console.WriteLine(" ");
         Console.WriteLine("Menu Options: ");
         Console.WriteLine("1. Create New Goal");
@@ -41,6 +38,12 @@ public abstract class Nowhere {
         string userInput = Console.ReadLine();
         _userNumber = int.Parse(userInput);
         return _userNumber;
+    }
+    public List<int> GiveMyCount() {
+        return _count;
+    }
+    public List<int> GiveMyLimit() {
+        return _limit;
     }
     public void FirstIndex() {
         _marksSimple.Add(" ");

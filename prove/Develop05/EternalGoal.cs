@@ -12,6 +12,9 @@ public class EternalGoal : Nowhere {
         _eternalGoalsDetail.Add($"{_name}: {_description}");
         _marksEternal.Add(" ");
     }
+    public List<int> GivePoints() {
+        return _associatedPoints;
+    }
     public override string WriteTitle() {
         _eternalGoalsDetail.Remove("None");
         Console.Write("What is the name of your goal? ");
