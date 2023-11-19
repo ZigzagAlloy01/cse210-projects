@@ -12,6 +12,9 @@ public class SimpleGoal : Nowhere {
         _simpleGoalsDetail.Add($"{_name}: {_description}");
         _marksSimple.Add(" ");
     }
+    public List<int> GivePoints() {
+        return _associatedPoints;
+    }
     public override string WriteTitle(){
         _simpleGoalsDetail.Remove("None");
         Console.Write("What is the name of your goal? ");
@@ -30,7 +33,9 @@ public class SimpleGoal : Nowhere {
         Console.WriteLine(" ");
         return _detail;
     }
-
+    public void FillList() {
+        _associatedPoints.Add(0);
+    }
     public string SaveGoalsSimple() {
         Console.Write("What is the file name? "); 
         _txt = Console.ReadLine();

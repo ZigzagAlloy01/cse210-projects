@@ -42,7 +42,10 @@ public class CheckListGoal : Nowhere {
         _bonusPoints.Add(_points);
         return _detail;
     }
-
+    public void FillList() {
+        _associatedPoints.Add(0);
+        _bonusPoints.Add(0);
+    }
     public void SaveGoalsChecklist(string _txt, List<string> _goals)
     {
         using (StreamWriter sw = File.AppendText($"{_txt}"))
