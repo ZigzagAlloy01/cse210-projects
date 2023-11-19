@@ -5,3 +5,6 @@
  - 1. [ ] Service: Every week / 100 / * / * / * 
  - Check List Goals / * / * / * / 
  - 1. [ ] Sleep: 6 hours -- Currently completed: / 0 / 4 / 60 / 500
+ - 1. [ ] Sleep: 6 hours -- Currently completed: / 0 / 4 / 60 / 500
+ - 1. [ ] Sleep: 6 hours -- Currently completed: / 0 / 4 / 60 / 500
+ - 1. [ ] Sleep: 6 hours -- Currently completed: / 0 / 4 / 60 / 500

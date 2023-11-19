@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 
 public abstract class Nowhere {
@@ -23,6 +24,7 @@ public abstract class Nowhere {
     public List<int> _currentPoints = new List<int> {};
     public List<int> _count = new List<int> {};
     public List<int> _limit = new List<int> {};
+    public List<int> _loadFilePoints = new List<int> {};
     public abstract void recordEvent(int points);
     public int DisplayMenu() {
         _currentPoints.Add(0);
@@ -133,19 +135,44 @@ public abstract class Nowhere {
         foreach (string i in _loadFileData) {
             Console.WriteLine(i);
         }
-
-        //_simpleGoalsDetail 
-        //_eternalGoalsDetail
-        //_checkGoalsDetail
     }
     public void bringBackData() {
-        string variable = _loadFileData[0];
-        Console.WriteLine(variable);
         int lenght = _loadFileData.Count;
         Console.WriteLine(lenght);
         int start = _loadFileData.IndexOf(" - Check List Goals");
-        for (int i = 35; i < lenght; i++) {
-            Console.WriteLine(_loadFileData[i]);
+        Console.WriteLine(start);
+        Console.WriteLine(" ");
+        int z = -1;
+        for (int i = start + 6; i < lenght; i++) {
+            int j = start + 6;
+            if ((i == j + 4) || (i == j + 4 + 5) || (i == j + 4 + (5 * (z+1)))){
+                z++;
+            }
+            if ((i != j + 4) && (i != j + 4 + 5) && (i != j + 4 + (5 * z))){
+                string score = _loadFileData[i];
+                int importantValue = int.Parse(score);
+                Console.WriteLine(importantValue);
+                _loadFilePoints.Add(importantValue);
+            }
+            
         }
+        for (int i = 0; i < _loadFilePoints.Count; i++) {
+                Console.WriteLine(_loadFilePoints[i]);
+        }
+    }
+    public void bringBackList() {
+        int start = _loadFileData.IndexOf(" - Check List Goals");
+        for (int i = 0; i < start+1; i = i + 5){
+            Console.WriteLine($"{_loadFileData[i]}");
+        }
+        for (int i = start+1; i < _loadFileData.Count; i = i + 5){
+            int j = 0;
+            Console.WriteLine($"{_loadFileData[i]} {_loadFilePoints[j]} / {_loadFilePoints[j+1]}");
+            //_simpleGoalsDetail 
+            //_eternalGoalsDetail
+            //_checkGoalsDetail
+            j = j + 4;
+        }
+            
     }
 }

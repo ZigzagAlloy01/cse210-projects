@@ -62,6 +62,8 @@ class Program
             else if (userNumber == 4)
                 {
                     simple.LoadGoals();
+                    simple.bringBackData();
+                    simple.bringBackList();
                     response = "yes";
                 }
             else if (userNumber == 5)
@@ -89,7 +91,7 @@ class Program
                 }
             else if (userNumber == 7)
                 {
-                    simple.bringBackData();
+                    
                     response = "yes";
                 }    
         }
