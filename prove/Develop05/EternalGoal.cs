@@ -66,8 +66,4 @@ public class EternalGoal : Nowhere {
     public override void recordEvent(int points) {
         _points = points;
     }
-    public bool isComplete() {
-        _completed = false;
-        return _completed;
-    }
 }

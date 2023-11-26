@@ -64,9 +64,4 @@ public class SimpleGoal : Nowhere {
     public override void recordEvent(int points) {
         _points = points;
     }
-
-    public bool isComplete() {
-        _completed = true;
-        return _completed;
-    }
 }

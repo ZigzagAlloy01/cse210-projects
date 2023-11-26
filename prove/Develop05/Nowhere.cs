@@ -52,8 +52,6 @@ public abstract class Nowhere {
         _simpleGoalsDetail.Add("None");
         _eternalGoalsDetail.Add("None");
         _checkGoalsDetail.Add("None");
-        _count.Add(1);
-        _limit.Add(1);
         _count.Add(0);
         _limit.Add(0);
     }
@@ -77,6 +75,10 @@ public abstract class Nowhere {
             {
                 _X = _marksSimple[i];
                 string show = _simpleGoalsDetail[i];
+                /*if (current == final) {
+                    _marksSimple[i] = "X";
+                    _X = _marksSimple[i];
+                }*/
                 Console.WriteLine($"{i+1}. [{_X}] {show}");
             }
     }
@@ -98,6 +100,10 @@ public abstract class Nowhere {
                 string show = _checkGoalsDetail[i];
                 int current = _count[i+1];
                 int final = _limit[i+1];
+                if (current == final) {
+                    _marksChecklist[i] = "X";
+                    _X = _marksChecklist[i];
+                }
                 Console.WriteLine($"{i+1}. [{_X}] {show} -- Currently completed: {current}/{final}");
             }
     }    

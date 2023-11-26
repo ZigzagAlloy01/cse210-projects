@@ -96,30 +96,30 @@ class Program
                 {
                     Console.WriteLine("List of points");
                     associatedPointsSimple = simple.GivePoints();
-                    for (int i = 1; i < associatedPointsSimple.Count; i++) {
+                   /* for (int i = 1; i < associatedPointsSimple.Count; i++) {
                         Console.WriteLine(associatedPointsSimple[i]);
-                    }
+                    }*/
                     associatedPointsEternal = eternal.GivePoints();
-                    for (int i = 1; i < associatedPointsEternal.Count; i++) {
+                   /* for (int i = 1; i < associatedPointsEternal.Count; i++) {
                         Console.WriteLine(associatedPointsEternal[i]);
-                    }
+                    }*/
                     associatedPointsChecklist = checkList.GivePoints();
-                    for (int i = 1; i < associatedPointsChecklist.Count; i++) {
+                    /*for (int i = 1; i < associatedPointsChecklist.Count; i++) {
                         Console.WriteLine(associatedPointsChecklist[i]);
-                    }
+                    }*/
                     associatedBonusPoints = checkList.GiveBonusPoints();
-                    for (int i = 1; i < associatedBonusPoints.Count; i++) {
+                   /* for (int i = 1; i < associatedBonusPoints.Count; i++) {
                         Console.WriteLine(associatedPointsChecklist[i]);
-                    }
+                    }*/
                     count = checkList.GiveMyCount();
-                    for (int i = 1; i < count.Count; i++) {
+                    /*for (int i = 1; i < count.Count; i++) {
                         Console.WriteLine(count[i]);
-                    }
+                    }*/
                     limit = checkList.GiveMyLimit();
-                    for (int i = 1; i < limit.Count; i++) {
+                /*  for (int i = 1; i < limit.Count; i++) {
                         Console.WriteLine(count[i]);
                     }
-
+*/
                     Console.WriteLine(" ");
                     Console.WriteLine("The goals are: ");
                     Console.WriteLine("Simple Goals: ");
@@ -140,7 +140,7 @@ class Program
                             string show = goalsChecklist[i];
                             Console.WriteLine($"{i}. {show}");
                         }
-                    Console.WriteLine("What kind of goal did you accomplish? (Write 1 for Simple Goals, 2 for Eternal Goals or 3 for Checklist Goals) ");
+                    Console.Write("What kind of goal did you accomplish? (Write 1 for Simple Goals, 2 for Eternal Goals or 3 for Checklist Goals) ");
                     string kindGoal = Console.ReadLine();
                     int kindGoalInt = int.Parse(kindGoal);
                     if (kindGoalInt == 1) {
@@ -182,7 +182,7 @@ class Program
                             string show = goalsChecklist[i];
                             Console.WriteLine($"{i}. {show}");
                         }
-                        Console.WriteLine("Which goal did you accomplish? ");
+                        Console.Write("Which goal did you accomplish? ");
                         string update = Console.ReadLine();
                         int goalToUpdate = int.Parse(update);
                         goal = goalsChecklist[goalToUpdate];

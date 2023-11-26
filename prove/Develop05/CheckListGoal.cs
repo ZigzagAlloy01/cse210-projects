@@ -38,8 +38,6 @@ public class CheckListGoal : Nowhere {
         Console.Write("How many times does this goal need to be accomplished for a bonus? ");
         _pointAssociated = Console.ReadLine();
         _points = int.Parse(_pointAssociated);
-        _count.Remove(1);
-        _limit.Remove(1);
         _count.Add(0);
         _limit.Add(_points);
         Console.Write("What is the bonus for accomplishing it that many times? ");
@@ -81,9 +79,5 @@ public class CheckListGoal : Nowhere {
     }
     public override void recordEvent(int points) {
         _points = points;
-    }
-    public bool isComplete() {
-        _completed = false;
-        return _completed;
     }
 }
