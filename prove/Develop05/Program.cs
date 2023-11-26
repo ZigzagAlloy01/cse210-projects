@@ -13,6 +13,7 @@ class Program
         List<int> associatedPointsEternal = new List<int> ();
         List<int> associatedPointsChecklist = new List<int> ();
         List<int> associatedBonusPoints = new List<int> ();
+        List<int> countOnce = new List<int> ();
         List<int> count = new List<int> ();
         List<int> limit = new List<int> ();
         List<int> currentPoints = new List<int> ();
@@ -111,6 +112,7 @@ class Program
                    /* for (int i = 1; i < associatedBonusPoints.Count; i++) {
                         Console.WriteLine(associatedPointsChecklist[i]);
                     }*/
+                    countOnce = simple.GiveMyCountOnce();
                     count = checkList.GiveMyCount();
                     /*for (int i = 1; i < count.Count; i++) {
                         Console.WriteLine(count[i]);
@@ -155,6 +157,7 @@ class Program
                         int goalToUpdate = int.Parse(update);
                         goal = goalsSimple[goalToUpdate];
                         Console.WriteLine(goal);
+                        countOnce[goalToUpdate] = countOnce[goalToUpdate] + 1;
                         point = associatedPointsSimple[goalToUpdate];
                         Console.WriteLine(point);
                         currentPoints.Add(point);

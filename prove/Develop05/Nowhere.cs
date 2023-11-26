@@ -21,6 +21,7 @@ public abstract class Nowhere {
     public List<string> _marksSimple = new List<string> {};
     public List<string> _marksEternal = new List<string> {};
     public List<string> _marksChecklist = new List<string> {};
+    public List<int> _countOnce = new List<int> {};
     public List<int> _count = new List<int> {};
     public List<int> _limit = new List<int> {};
     public List<int> _loadFilePoints = new List<int> {};
@@ -42,6 +43,9 @@ public abstract class Nowhere {
     public List<int> GiveMyCount() {
         return _count;
     }
+    public List<int> GiveMyCountOnce() {
+        return _countOnce;
+    }
     public List<int> GiveMyLimit() {
         return _limit;
     }
@@ -52,6 +56,7 @@ public abstract class Nowhere {
         _simpleGoalsDetail.Add("None");
         _eternalGoalsDetail.Add("None");
         _checkGoalsDetail.Add("None");
+        _countOnce.Add(0);
         _count.Add(0);
         _limit.Add(0);
     }
@@ -73,13 +78,21 @@ public abstract class Nowhere {
         Console.WriteLine("Simple Goals");
         for (int i = 0; i < _simpleGoalsDetail.Count; i++)
             {
-                _X = _marksSimple[i];
-                string show = _simpleGoalsDetail[i];
-                /*if (current == final) {
-                    _marksSimple[i] = "X";
+                if (_countOnce.Count == 1) {
                     _X = _marksSimple[i];
-                }*/
-                Console.WriteLine($"{i+1}. [{_X}] {show}");
+                    Console.WriteLine($"{i+1}. [{_X}] None");
+                }
+                if (_countOnce.Count > 1) {
+                    _X = _marksSimple[i];
+                    string show = _simpleGoalsDetail[i];
+                    int current = _countOnce[i+1];
+                    int end = 1;
+                    if (current == end) {
+                        _marksSimple[i] = "X";
+                        _X = _marksSimple[i];
+                    }
+                    Console.WriteLine($"{i+1}. [{_X}] {show}");
+                }
             }
     }
     public void ListGoalsEternal() {
@@ -96,15 +109,21 @@ public abstract class Nowhere {
         Console.WriteLine("Check List Goals");
         for (int i = 0; i < _checkGoalsDetail.Count; i++)
             {
-                _X = _marksChecklist[i];
-                string show = _checkGoalsDetail[i];
-                int current = _count[i+1];
-                int final = _limit[i+1];
-                if (current == final) {
-                    _marksChecklist[i] = "X";
+                if (_count.Count == 1){
                     _X = _marksChecklist[i];
+                    Console.WriteLine($"{i+1}. [{_X}] None -- Currently completed: 0/0");
                 }
-                Console.WriteLine($"{i+1}. [{_X}] {show} -- Currently completed: {current}/{final}");
+                if (_count.Count > 1){
+                    _X = _marksChecklist[i];
+                    string show = _checkGoalsDetail[i];
+                    int current = _count[i+1];
+                    int final = _limit[i+1];
+                    if (current == final) {
+                        _marksChecklist[i] = "X";
+                        _X = _marksChecklist[i];
+                    }
+                    Console.WriteLine($"{i+1}. [{_X}] {show} -- Currently completed: {current}/{final}");
+                }
             }
     }    
     public void LoadGoals()

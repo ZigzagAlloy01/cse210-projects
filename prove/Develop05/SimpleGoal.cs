@@ -30,6 +30,7 @@ public class SimpleGoal : Nowhere {
         _pointAssociated = Console.ReadLine();
         _points = int.Parse(_pointAssociated);
         _associatedPoints.Add(_points);
+        _countOnce.Add(0);
         Console.WriteLine(" ");
         return _detail;
     }
