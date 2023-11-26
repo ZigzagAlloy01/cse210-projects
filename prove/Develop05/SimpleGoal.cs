@@ -41,6 +41,9 @@ public class SimpleGoal : Nowhere {
         _txt = Console.ReadLine();
         using (StreamWriter sw = File.CreateText($"{_txt}"))
         {
+            if (_associatedPoints.Count > 1) {
+                _associatedPoints.Remove(0);
+            }
             _goals.Clear();
             _goals.Add(" - / * / * / * / The goals are: ");
             _goals.Add(" - Simple Goals / * / * / * / ");

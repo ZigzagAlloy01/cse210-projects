@@ -57,6 +57,10 @@ public class CheckListGoal : Nowhere {
         using (StreamWriter sw = File.AppendText($"{_txt}"))
         {
             _goals.Add(" - Check List Goals / * / * / * / ");
+            if (_associatedPoints.Count > 1) {
+                _associatedPoints.Remove(0);
+                _bonusPoints.Remove(0);
+            }
             for (int i = 0; i < _checkGoalsDetail.Count; i++)
                 {
                     _X = _marksChecklist[i];

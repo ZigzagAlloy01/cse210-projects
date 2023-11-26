@@ -27,9 +27,6 @@ public class EternalGoal : Nowhere {
     public void FillList() {
         _associatedPoints.Add(0);
     }
-    public void EraseList() {
-        _associatedPoints.Remove(0);
-    }
     public override string WriteDescription() {
         Console.Write("What is a short description of it? ");
         _detail = Console.ReadLine();
@@ -46,6 +43,9 @@ public class EternalGoal : Nowhere {
         using (StreamWriter sw = File.AppendText($"{_txt}"))
         {
             _goals.Add(" - Eternal Goals / * / * / * / ");
+            if (_associatedPoints.Count > 1) {
+                _associatedPoints.Remove(0);
+            }
             for (int i = 0; i < _eternalGoalsDetail.Count; i++)
                 {
                     _X = _marksEternal[i];

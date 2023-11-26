@@ -1,7 +1,0 @@
- - / * / * / * / The goals are: 
- - Simple Goals / * / * / * / 
- - 1. [ ] c: ccccc / 0 / * / * / *
- - Eternal Goals / * / * / * / 
- - 1. [ ] v: vvvvvvvv / 0 / * / * / * 
- - Check List Goals / * / * / * / 
- - 1. [ ] b: bbbbbbbb -- Currently completed: / 3 / 3 / 0 / 0

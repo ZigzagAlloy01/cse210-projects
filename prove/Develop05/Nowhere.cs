@@ -120,30 +120,22 @@ public abstract class Nowhere {
                 string[] parts = line.Split(" / ");
                 string data = parts[0];
                 _loadFileData.Add(data);
-                Console.WriteLine(data);
                 data = parts[1];
                 _loadFileData.Add(data);
-                Console.WriteLine(data);
                 data = parts[2];
                 _loadFileData.Add(data);
-                Console.WriteLine(data);
                 data = parts[3];
                 _loadFileData.Add(data);
-                Console.WriteLine(data);
                 data = parts[4];
                 _loadFileData.Add(data);
-                Console.WriteLine(data);
             }
-            Console.WriteLine("Load file");
         foreach (string i in _loadFileData) {
             Console.WriteLine(i);
         }
     }
     public void bringBackData() {
         int lenght = _loadFileData.Count;
-        Console.WriteLine(lenght);
         int start = _loadFileData.IndexOf(" - Check List Goals");
-        Console.WriteLine(start);
         Console.WriteLine(" ");
         int z = -1;
         for (int i = start + 6; i < lenght; i++) {
@@ -154,13 +146,9 @@ public abstract class Nowhere {
             if ((i != j + 4) && (i != j + 4 + 5) && (i != j + 4 + (5 * z))){
                 string score = _loadFileData[i];
                 int importantValue = int.Parse(score);
-                Console.WriteLine(importantValue);
                 _loadFilePoints.Add(importantValue);
             }
             
-        }
-        for (int i = 0; i < _loadFilePoints.Count; i++) {
-                Console.WriteLine(_loadFilePoints[i]);
         }
     }
     public void bringBackList() {
