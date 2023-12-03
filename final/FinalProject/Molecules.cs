@@ -12,6 +12,7 @@ public abstract class Molecules {
         Console.WriteLine("Welcome to the Database of the Chemical and Physical Properties of Molecules!");
         Console.Write("Press Enter to see the list of molecules ");
         var userInput = Console.ReadKey();
+        Console.WriteLine(" ");
         if(userInput.Key == ConsoleKey.Enter) {
             _cycle = true;
         }

@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 class Program
 {
+    // The progress on the project can be described like this:
+    //The Program class has been developed to facilitate user interaction, allowing navigation through different molecules and the selection of features. Implemented logic displays relevant information such as names, formulas, and various features for each molecule. The project includes several classes (AcidityBasicity, BoilingMelting, etc.) representing distinct chemical and physical properties for the molecules. Abstraction is employed through abstract methods in the base class (Molecules), and polymorphism is demonstrated by invoking overridden methods in derived classes. Protected lists have been introduced in the base class to facilitate interaction with derived classes while maintaining encapsulation. Additions to the program might be: 1). Adding an option to select multiple molecules and print different properties of each one. 2). Adding an option to create text files with the features displayed in the program.
     static void Main(string[] args)
     {
         bool cycle;
