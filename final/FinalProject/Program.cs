@@ -28,81 +28,79 @@ class Program
         cycle = pKa.Welcome();
         while (cycle == true) {
             moleculeIndex = pKa.DisplayMenu();
-            Console.WriteLine(" ");
             if (moleculeIndex > -1 && moleculeIndex < 30) {
                 featureIndex = pKa.ChooseFeature();
             }
             else {
                 featureIndex = -1;
             }
-            Console.WriteLine(" ");
             if (featureIndex > -1 && featureIndex < 9) {
                 if (featureIndex == 0) {
-                    acidity = pKa.ShowConstant(moleculeIndex);
-                    name = pKa.ShowName(moleculeIndex);
+                    acidity = pKa.GetFeatureInformation(moleculeIndex);
+                    name = pKa.GetName(moleculeIndex);
                     Console.WriteLine($"{name}");
                     Console.WriteLine($"{acidity}");
                     cycle = pKa.Reload();
                 }
                 else if (featureIndex == 1) {
-                    temperature = point.ShowPoints(moleculeIndex);
-                    name = pKa.ShowName(moleculeIndex);
+                    temperature = point.GetFeatureInformation(moleculeIndex);
+                    name = point.GetName(moleculeIndex);
                     Console.WriteLine($"{name}");
                     Console.WriteLine($"{temperature}");
                     cycle = pKa.Reload();
                 }
                 else if (featureIndex == 2) {
-                    electricalBehavior = conductivity.ShowElectricalBehavior(moleculeIndex);
-                    name = pKa.ShowName(moleculeIndex);
+                    electricalBehavior = conductivity.GetFeatureInformation(moleculeIndex);
+                    name = conductivity.GetName(moleculeIndex);
                     Console.WriteLine($"{name}");
                     Console.WriteLine($"{electricalBehavior}");
                     cycle = pKa.Reload();
                 }
                 else if (featureIndex == 3) {
-                    massInVolume = density.ShowDensity(moleculeIndex);
-                    name = pKa.ShowName(moleculeIndex);
+                    massInVolume = density.GetFeatureInformation(moleculeIndex);
+                    name = density.GetName(moleculeIndex);
                     Console.WriteLine($"{name}");
                     Console.WriteLine($"{massInVolume}");
                     cycle = pKa.Reload();
                 }
                 else if (featureIndex == 4) {
-                    organicCharacter = character.ShowCharacter(moleculeIndex);
-                    name = pKa.ShowName(moleculeIndex);
+                    organicCharacter = character.GetFeatureInformation(moleculeIndex);
+                    name = character.GetName(moleculeIndex);
                     Console.WriteLine($"{name}");
                     Console.WriteLine($"{organicCharacter}");
                     cycle = pKa.Reload();
                 }
                 else if (featureIndex == 5) {
-                    vibration = wavenumber.ShowPeaks(moleculeIndex);
-                    name = pKa.ShowName(moleculeIndex);
+                    vibration = wavenumber.GetFeatureInformation(moleculeIndex);
+                    name = wavenumber.GetName(moleculeIndex);
                     Console.WriteLine($"{name}");
                     Console.WriteLine($"{vibration}");
                     cycle = pKa.Reload();
                 }
                 else if (featureIndex == 6) {
-                    massInMol = weight.ShowWeight(moleculeIndex);
-                    name = pKa.ShowName(moleculeIndex);
+                    massInMol = weight.GetFeatureInformation(moleculeIndex);
+                    name = weight.GetName(moleculeIndex);
                     Console.WriteLine($"{name}");
                     Console.WriteLine($"{massInMol}");
                     cycle = pKa.Reload();
                 }
                 else if (featureIndex == 7) {
-                    solution = solubility.ShowSolubility(moleculeIndex);
-                    name = pKa.ShowName(moleculeIndex);
+                    solution = solubility.GetFeatureInformation(moleculeIndex);
+                    name = solubility.GetName(moleculeIndex);
                     Console.WriteLine($"{name}");
                     Console.WriteLine($"{solution}");
                     cycle = pKa.Reload();
                 }
                 else if (featureIndex == 8) {
-                name = pKa.ShowName(moleculeIndex);
-                acidity = pKa.ShowConstant(moleculeIndex);
-                temperature = point.ShowPoints(moleculeIndex);
-                electricalBehavior = conductivity.ShowElectricalBehavior(moleculeIndex);
-                massInVolume = density.ShowDensity(moleculeIndex);
-                organicCharacter = character.ShowCharacter(moleculeIndex);
-                vibration = wavenumber.ShowPeaks(moleculeIndex);
-                massInMol = weight.ShowWeight(moleculeIndex);
-                solution = solubility.ShowSolubility(moleculeIndex);
+                name = pKa.GetName(moleculeIndex);
+                acidity = pKa.GetFeatureInformation(moleculeIndex);
+                temperature = point.GetFeatureInformation(moleculeIndex);
+                electricalBehavior = conductivity.GetFeatureInformation(moleculeIndex);
+                massInVolume = density.GetFeatureInformation(moleculeIndex);
+                organicCharacter = character.GetFeatureInformation(moleculeIndex);
+                vibration = wavenumber.GetFeatureInformation(moleculeIndex);
+                massInMol = weight.GetFeatureInformation(moleculeIndex);
+                solution = solubility.GetFeatureInformation(moleculeIndex);
                 Console.WriteLine($"{name}");
                 Console.WriteLine(" ");
                 Console.WriteLine("List of Features: ");
